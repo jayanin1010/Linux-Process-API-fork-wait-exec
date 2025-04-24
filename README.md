@@ -58,7 +58,7 @@ Test the C Program for the desired output.
 
 
 
-![alt text](img/pid_ppid.png)
+![alt text](pid_ppid.png)
 
 
 
@@ -162,7 +162,7 @@ Test the C Program for the desired output.
 
 ## OUTPUT
 
-
+![alt text](img/exec0.png)
 ![alt text](img/exec.png)
 
 
