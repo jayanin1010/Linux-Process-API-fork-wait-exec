@@ -28,6 +28,20 @@ Test the C Program for the desired output.
 
 
 
+        #include <stdio.h>
+        #include <unistd.h>
+
+        int main() {
+            pid_t pid, ppid;
+
+            pid = getpid();     // Get current process ID
+            ppid = getppid();   // Get parent process ID
+
+            printf("Process ID: %d\n", pid);
+            printf("Parent Process ID: %d\n", ppid);
+
+            return 0;
+        }
 
 
 
@@ -40,11 +54,11 @@ Test the C Program for the desired output.
 
 
 
-##OUTPUT
+## OUTPUT
 
 
 
-
+![alt text](img/pid_ppid.png)
 
 
 
@@ -60,6 +74,33 @@ Test the C Program for the desired output.
 
 
 
+        #include <stdio.h>
+        #include <stdlib.h>
+        #include <unistd.h>
+
+        int main() {
+            pid_t pid;
+
+            pid = fork();  // Create a new process
+
+            if (pid < 0) {
+                // Fork failed
+                perror("fork failed");
+                exit(1);
+            } else if (pid == 0) {
+                // Child process
+                printf("Child Process:\n");
+                printf("  PID: %d\n", getpid());
+                printf("  Parent PID: %d\n", getppid());
+                exit(0);  // Child exits
+            } else {
+                // Parent process
+                printf("Parent Process:\n");
+                printf("  PID: %d\n", getpid());
+                printf("  Child PID: %d\n", pid);
+                exit(0);  // Parent exits
+            }
+        }
 
 
 
@@ -69,10 +110,10 @@ Test the C Program for the desired output.
 
 
 
-##OUTPUT
+## OUTPUT
 
 
-
+![alt text](img/fork.png)
 
 
 
@@ -84,6 +125,20 @@ Test the C Program for the desired output.
 
 
 
+        #include <stdio.h>
+        #include <stdlib.h>
+        #include <unistd.h>
+
+        int main() {
+            printf("Before executing ls -l\n");
+
+            // execl(path, arg0, arg1, ..., NULL)
+            execl("/bin/ls", "ls", "-l", NULL);
+
+            // If execl() is successful, the lines below won't execute
+            perror("execl failed");
+            exit(1);
+        }
 
 
 
@@ -105,10 +160,10 @@ Test the C Program for the desired output.
 
 
 
-##OUTPUT
+## OUTPUT
 
 
-
+![alt text](img/exec.png)
 
 
 
