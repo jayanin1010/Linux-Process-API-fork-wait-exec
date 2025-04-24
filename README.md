@@ -58,7 +58,7 @@ Test the C Program for the desired output.
 
 
 
-![alt text](pid_ppid.png)
+![alt text](img/pid_ppid.png)
 
 
 
